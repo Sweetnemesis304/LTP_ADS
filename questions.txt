@@ -1,0 +1,62 @@
+Responda:
+
+a) acesse o arquivo php.ini (acessível através do botão "config" do Apache no XAMPP) e liste os valores definidos para file_uploads, upload_max_filesize, upload_tmp_dir, post_max_size, max_input_time
+
+file_upload: Permite ou não upload de arquivos através do HTTP.
+
+upload_max_filesize: O tamanho máximo de um arquivo enviado. 
+post_max_size precisa ser maior que esse valor.
+Quando um int é usado, o valor é medido em bytes. 
+A notação abreviada, como descrita nesta FAQ, também pode ser usada.
+
+upload_tmp_dir:O diretório temporário utilizado para armazenar arquivos durante o upload. 
+Precisa ter permissão de escrita para qualquer usuário que o PHP esteja usando para rodar. 
+Se não especificado o PHP usará o padrão do sistema.
+Se o diretório especificado aqui não tiver permissão de escrita, 
+o PHP tenta o diretório temporário padrão do sistema. Se open_basedir estiver habilitado, 
+então o diretório padrão do sistema deve ser permitido para que o upload tenha sucesso.
+
+post_max_size:onfigura o tamanho máximo dos dados postados. 
+Esta configuração também afeta o upload de arquivos. 
+Para carregar arquivos grandes este valor deve ser maior que upload_max_filesize. 
+De maneira geral memory_limit deve ser maior que post_max_size. 
+Quando um int é usado, o valor é medido em bytes. 
+A notação abreviada, como descrita nesta FAQ, também pode ser usada. 
+Se o tamanho dos dados postados for maior que post_max_size então as variáveis superglobals 
+$_POST e $_FILES ficarão vazias. 
+Isto pode ser observado de várias maneiras, por exemplo, passando uma variável 
+$_GET ao script que processará os dados, por exemplo, <form action="edit.php?processed=1">, 
+e então verificando se $_GET['processed'] está preenchida.
+
+
+max_input_time: Configura o tempo máximo, em segundos, que um script é permitido dispensar 
+interpretando dados de entrada, como GET e POST. 
+O cronômetro começa no momento que o PHP é chamado pelo servidor e termina quando a execução começa. 
+A configuração padrão é -1, o que significa que o valor de max_execution_time será usado. 
+Defina como 0 para permitir tempo ilimitado.
+
+b) para que servem as funções is_uploaded_file() e move_uploaded_file()
+is_uploaded_file() informa se o arquido foi  enviado for POST HTTP.
+move_uploaded_file() move o arquivo enviado pata uma nova localização.
+
+c) Para que serve a tag <input type="hidden">?
+Para definir um campo de input escondido.
+
+d) Como filtrar as extensões de arquivos que serão aceitas para upload no programa PHP?
+Para filtrar as extensões de arquivos que serão aceitas para upload em um programa PHP, 
+você pode usar o atributo accept no elemento de entrada de arquivo HTML e também validar 
+as extensões no lado do servidor, no script PHP que processa o upload do arquivo.
+
+
+
+Escreva o código HTML para fazer o upload de:
+
+a) um arquivo de imagem (extensões jpg, png, bmp) 
+
+b) um arquivo PDF 
+
+O programa PHP que recebe os arquivos após o upload deve:
+
+a) exibir a imagem contida no arquivo (tag <img>).
+
+b) criar um link para o arquivo PDF (tag <a href...>).
